@@ -1,0 +1,1281 @@
+
+/* =====================================================
+   1. IMPORT GOOGLE FONTS
+   ===================================================== */
+
+/*
+   @import is used to load external CSS resources.
+
+   We are importing two fonts from Google Fonts:
+
+   DM Sans:
+   Used for normal text, paragraphs, buttons, etc.
+
+   Playfair Display:
+   Used for headings and the blog logo.
+
+   font-weight:
+   400 = Normal
+   500 = Medium
+   600 = Semi-bold
+   700 = Bold
+
+   display=swap allows fallback text to appear while
+   the Google font is loading.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+
+/* =====================================================
+   2. UNIVERSAL SELECTOR
+   ===================================================== */
+
+/*
+   The * selector selects EVERY HTML element.
+
+   margin: 0;
+   Removes the browser's default outer spacing.
+
+   padding: 0;
+   Removes the browser's default inner spacing.
+
+   box-sizing: border-box;
+   Makes width and height calculations easier.
+
+   With border-box, padding and borders are included
+   inside the declared width and height.
+
+   This helps prevent unexpected element sizes.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   3. HTML ELEMENT
+   ===================================================== */
+
+/*
+   html selects the root HTML element.
+
+   scroll-behavior: smooth;
+   Makes navigation scrolling smooth instead of jumping.
+
+   Example:
+   When clicking "Write a Post +", the browser smoothly
+   scrolls to the section having id="create-post".
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =====================================================
+   4. BODY
+   ===================================================== */
+
+/*
+   body represents the visible webpage.
+
+   background:
+   Sets the overall background color.
+
+   color:
+   Sets the default text color.
+
+   font-family:
+   Uses DM Sans for normal text.
+   sans-serif is the fallback font.
+
+   line-height:
+   Controls the vertical distance between lines.
+
+   1.6 means line height is 1.6 times the font size.
+*/
+
+body {
+    background: #f8f7f3;
+    color: #222;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   5. NAVBAR
+   ===================================================== */
+
+/*
+   .navbar selects elements having class="navbar".
+
+   The dot (.) means we are selecting a CSS class.
+
+   height: 75px;
+   Makes the navbar 75 pixels tall.
+
+   padding: 0 9%;
+   0 = no vertical padding.
+   9% = horizontal padding on left and right.
+
+   display: flex;
+   Activates Flexbox layout.
+
+   align-items: center;
+   Vertically centers the navbar contents.
+
+   justify-content: space-between;
+   Places the logo on the left and navigation link
+   on the right.
+
+   border-bottom:
+   Adds a thin border below the navbar.
+
+   background:
+   Gives the navbar a white background.
+*/
+
+.navbar {
+    height: 75px;
+    padding: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8e5dd;
+    background: #fff;
+}
+
+
+/* =====================================================
+   6. BLOG LOGO
+   ===================================================== */
+
+/*
+   .logo selects the element having class="logo".
+
+   font-size: 27px;
+   Sets logo text size.
+
+   font-weight: 700;
+   Makes the logo bold.
+
+   text-decoration: none;
+   Removes the default underline from the link.
+
+   color:
+   Sets the logo text color.
+
+   font-family:
+   Uses Playfair Display for an elegant appearance.
+*/
+
+.logo {
+    font-size: 27px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #222;
+    font-family: 'Playfair Display', serif;
+}
+
+
+/*
+   .logo span selects only span elements inside
+   an element having class="logo".
+
+   It changes the color of the Blog part of the logo
+   without changing the My part.
+*/
+
+.logo span {
+    color: #a77b45;
+}
+
+
+/* =====================================================
+   7. NAVIGATION LINK
+   ===================================================== */
+
+/*
+   .nav-link styles the Write a Post and Back to Home links.
+
+   text-decoration: none;
+   Removes the default link underline.
+
+   color:
+   Sets the text color.
+
+   font-weight: 600;
+   Makes the text semi-bold.
+
+   font-size: 14px;
+   Sets the text size.
+*/
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+/*
+   :hover is a CSS pseudo-class.
+
+   It applies styles when the mouse pointer moves
+   over the navigation link.
+
+   Here, the link changes to a brown color.
+*/
+
+.nav-link:hover {
+    color: #a77b45;
+}
+
+
+/* =====================================================
+   8. MAIN CONTAINER
+   ===================================================== */
+
+/*
+   .container controls the overall width of the page.
+
+   width: 82%;
+   Makes the container use 82% of its parent's width.
+
+   max-width: 1100px;
+   Prevents the container from becoming wider than
+   1100 pixels on large screens.
+
+   margin: auto;
+   Automatically distributes remaining horizontal space
+   equally on both sides, centering the container.
+*/
+
+.container {
+    width: 82%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   9. HERO SECTION
+   ===================================================== */
+
+/*
+   .hero selects the introductory section of the homepage.
+
+   padding: 100px 0 75px;
+
+   The three values mean:
+   100px = top padding
+   0     = left and right padding
+   75px  = bottom padding
+
+   border-bottom:
+   Adds a separating line below the hero section.
+*/
+
+.hero {
+    padding: 100px 0 75px;
+    border-bottom: 1px solid #dedbd2;
+}
+
+
+/* =====================================================
+   10. EYEBROW TEXT
+   ===================================================== */
+
+/*
+   .eyebrow styles small introductory labels.
+
+   Example:
+   WELCOME TO MY SPACE
+   THE JOURNAL
+   UPDATE YOUR ARTICLE
+
+   color:
+   Sets the text color to brown.
+
+   letter-spacing:
+   Adds extra space between letters.
+
+   font-size:
+   Makes the text small.
+
+   font-weight:
+   Makes the text bold.
+
+   margin-bottom:
+   Adds space below the label.
+*/
+
+.eyebrow {
+    color: #a77b45;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+
+/* =====================================================
+   11. HERO MAIN HEADING
+   ===================================================== */
+
+/*
+   .hero h1 means:
+
+   Select the h1 element located inside an element
+   having class="hero".
+
+   font-family:
+   Uses Playfair Display.
+
+   font-size: clamp(45px, 7vw, 75px);
+
+   clamp(minimum, preferred, maximum)
+
+   Minimum size = 45px
+   Preferred size = 7vw
+   Maximum size = 75px
+
+   vw means viewport width.
+
+   This makes the heading responsive:
+   It adjusts according to screen width but does not
+   become smaller than 45px or larger than 75px.
+
+   line-height: 1.12;
+   Controls the spacing between heading lines.
+
+   font-weight: 600;
+   Makes the heading semi-bold.
+*/
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 7vw, 75px);
+    line-height: 1.12;
+    font-weight: 600;
+}
+
+
+/*
+   Selects the span inside the hero's h1.
+
+   Changes the color of the word "Thoughts."
+*/
+
+.hero h1 span {
+    color: #a77b45;
+}
+
+
+/* =====================================================
+   12. HERO DESCRIPTION
+   ===================================================== */
+
+/*
+   Styles the paragraph below the main heading.
+
+   max-width:
+   Prevents the paragraph from becoming too wide.
+
+   color:
+   Uses grey text.
+
+   margin-top:
+   Adds space above the paragraph.
+
+   font-size:
+   Sets paragraph text size.
+*/
+
+.hero-description {
+    max-width: 470px;
+    color: #777;
+    margin-top: 22px;
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   13. CREATE POST SECTION
+   ===================================================== */
+
+/*
+   Styles the box containing the Create a New Post form.
+
+   margin: 65px 0;
+   Adds 65px outside space at the top and bottom.
+
+   padding: 35px;
+   Adds 35px inside space on all sides.
+
+   background:
+   Makes the form section white.
+
+   border:
+   Adds a thin light-grey border.
+
+   border-radius:
+   Rounds the corners by 12px.
+*/
+
+.create-section {
+    margin: 65px 0;
+    padding: 35px;
+    background: #fff;
+    border: 1px solid #e8e5dd;
+    border-radius: 12px;
+}
+
+
+/*
+   Selects h2 headings inside the create-section.
+
+   Uses an elegant font, sets its size,
+   and adds space below the heading.
+*/
+
+.create-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+
+/*
+   Selects the form inside create-section.
+
+   display: flex;
+   Uses Flexbox.
+
+   flex-direction: column;
+   Arranges form elements vertically.
+
+   gap: 15px;
+   Adds 15px space between form elements.
+*/
+
+.create-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/*
+   Styles labels inside the create-section.
+
+   font-size: 14px;
+   Makes labels smaller.
+
+   font-weight: 600;
+   Makes labels semi-bold.
+*/
+
+.create-section label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   14. INPUT AND TEXTAREA
+   ===================================================== */
+
+/*
+   This selector contains two elements:
+
+   input  = Single-line text field.
+   textarea = Multi-line text field.
+
+   The same styles are applied to both elements.
+
+   width: 100%;
+   Makes both fields fill their available container width.
+
+   padding: 15px;
+   Adds space inside each field.
+
+   font-family: inherit;
+   Uses the same font as the parent element.
+
+   font-size:
+   Sets the entered text size.
+
+   border:
+   Adds a thin border.
+
+   border-radius:
+   Rounds the corners.
+
+   outline: none;
+   Removes the default browser focus outline.
+
+   background:
+   Sets a slightly off-white background.
+*/
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid #dedbd2;
+    border-radius: 7px;
+    outline: none;
+    background: #fdfdfc;
+}
+
+
+/*
+   :focus is a pseudo-class.
+
+   It applies when the user clicks inside an input
+   or textarea, or focuses it using the keyboard.
+
+   border-color changes the border to brown.
+
+   This helps users identify which field they are editing.
+*/
+
+input:focus,
+textarea:focus {
+    border-color: #a77b45;
+}
+
+
+/*
+   resize: vertical;
+
+   Allows the user to change the height of the textarea.
+
+   vertical means the user can resize it up and down,
+   but not horizontally.
+*/
+
+textarea {
+    resize: vertical;
+}
+
+
+/* =====================================================
+   15. GENERAL BUTTON
+   ===================================================== */
+
+/*
+   .btn styles the Publish Post and Save Changes buttons.
+
+   background:
+   Sets a dark background.
+
+   color:
+   Makes button text white.
+
+   border: none;
+   Removes the default button border.
+
+   padding: 14px 22px;
+   Adds 14px vertical and 22px horizontal inner spacing.
+
+   border-radius:
+   Rounds the corners.
+
+   font-size and font-weight:
+   Control text size and boldness.
+
+   cursor: pointer;
+   Changes the mouse pointer into a hand when hovering.
+
+   align-self: flex-start;
+   Prevents the button from stretching across the entire
+   width of the flex container.
+
+   transition: 0.2s;
+   Makes visual changes happen smoothly over 0.2 seconds.
+*/
+
+.btn {
+    background: #252525;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: 0.2s;
+}
+
+
+/*
+   When the mouse moves over the button,
+   its background changes from dark to brown.
+*/
+
+.btn:hover {
+    background: #a77b45;
+}
+
+
+/* =====================================================
+   16. POSTS SECTION
+   ===================================================== */
+
+/*
+   Styles the complete section displaying blog posts.
+
+   padding: 20px 0 90px;
+
+   20px = top padding
+   0    = horizontal padding
+   90px = bottom padding
+
+   Adds space around the post listing.
+*/
+
+.posts-section {
+    padding: 20px 0 90px;
+}
+
+
+/* =====================================================
+   17. SECTION HEADING
+   ===================================================== */
+
+/*
+   .section-heading contains:
+   - Latest Articles heading
+   - Number of posts
+
+   display: flex;
+   Places its children in a flexible layout.
+
+   justify-content: space-between;
+   Places the heading on the left and post count on the right.
+
+   align-items: center;
+   Vertically centers both elements.
+
+   margin-bottom:
+   Adds space below this heading area.
+*/
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+/*
+   Selects h2 inside section-heading.
+
+   Applies the decorative font and font size.
+*/
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+}
+
+
+/*
+   Styles the number of posts displayed near Latest Articles.
+*/
+
+.post-count {
+    color: #777;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   18. POSTS GRID
+   ===================================================== */
+
+/*
+   .posts-grid contains all individual post cards.
+
+   display: grid;
+   Activates CSS Grid.
+
+   grid-template-columns: repeat(2, 1fr);
+
+   repeat(2, 1fr) means:
+   Create 2 equal-width columns.
+
+   1fr means one equal fraction of available space.
+
+   gap: 22px;
+   Adds 22px spacing between rows and columns.
+*/
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+
+/* =====================================================
+   19. INDIVIDUAL POST CARD
+   ===================================================== */
+
+/*
+   .post-card styles each blog article separately.
+
+   background:
+   White card background.
+
+   border:
+   Adds a light border around each card.
+
+   border-radius:
+   Rounds the card corners.
+
+   padding:
+   Adds space inside the card.
+
+   transition:
+   Makes hover effects smooth.
+
+   min-width: 0;
+   Allows grid items to shrink below their automatic
+   minimum content size when necessary.
+*/
+
+.post-card {
+    background: white;
+    border: 1px solid #e8e5dd;
+    border-radius: 10px;
+    padding: 27px;
+    transition: 0.2s;
+    min-width: 0;
+}
+
+
+/*
+   .post-card:hover applies when the mouse moves
+   over an individual blog card.
+
+   transform: translateY(-4px);
+   Moves the card upward by 4px.
+
+   box-shadow:
+   Adds a subtle shadow around the card.
+
+   rgba(0, 0, 0, 0.05):
+   Black with 5% opacity.
+
+   This creates a subtle floating-card effect.
+*/
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =====================================================
+   20. POST METADATA
+   ===================================================== */
+
+/*
+   .post-meta contains:
+   - Article number
+   - Publication date
+
+   display: flex;
+   Places both items in a flexible row.
+
+   justify-content: space-between;
+   Places article number on the left and date on the right.
+
+   gap: 10px;
+   Provides space between the two items.
+
+   color:
+   Uses grey text.
+
+   font-size:
+   Makes the metadata small.
+
+   margin-bottom:
+   Adds space below the metadata.
+*/
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 22px;
+}
+
+
+/* =====================================================
+   21. POST TITLE
+   ===================================================== */
+
+/*
+   Selects h3 elements inside each post card.
+
+   font-family:
+   Uses Playfair Display.
+
+   font-size:
+   Sets the article title size.
+
+   line-height:
+   Controls vertical spacing between title lines.
+
+   margin-bottom:
+   Adds space below the title.
+
+   overflow-wrap: anywhere;
+   Allows long words or unbroken text to wrap
+   instead of overflowing outside the card.
+*/
+
+.post-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.3;
+    margin-bottom: 13px;
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   22. POST CONTENT
+   ===================================================== */
+
+/*
+   Styles the actual blog article content.
+
+   color:
+   Uses grey text.
+
+   font-size:
+   Sets paragraph text size.
+
+   white-space: pre-wrap;
+   Preserves line breaks entered by the user.
+   It also allows text to wrap naturally.
+
+   overflow-wrap: anywhere;
+   Prevents very long words or strings from
+   overflowing outside the card.
+
+   margin-bottom:
+   Adds space below the article content.
+*/
+
+.post-content {
+    color: #777;
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   23. EDIT AND DELETE BUTTON CONTAINER
+   ===================================================== */
+
+/*
+   .post-actions contains the Edit link and Delete button.
+
+   display: flex;
+   Arranges the actions horizontally.
+
+   gap: 20px;
+   Adds space between Edit and Delete.
+
+   align-items: center;
+   Vertically aligns both actions.
+
+   border-top:
+   Adds a dividing line above the buttons.
+
+   padding-top:
+   Adds space between the line and buttons.
+*/
+
+.post-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 17px;
+}
+
+
+/*
+   Selects forms inside post-actions.
+
+   display: inline;
+   Makes the form participate in inline layout
+   instead of taking its own full block line.
+
+   This helps keep Delete next to Edit.
+*/
+
+.post-actions form {
+    display: inline;
+}
+
+
+/* =====================================================
+   24. COMMON EDIT AND DELETE BUTTON STYLING
+   ===================================================== */
+
+/*
+   The comma separates multiple selectors.
+
+   This means the following styles apply to:
+   - .edit-btn
+   - .delete-btn
+
+   background: none;
+   Removes background.
+
+   border: none;
+   Removes default border.
+
+   cursor: pointer;
+   Displays a hand pointer.
+
+   text-decoration: none;
+   Removes underline.
+
+   font-family: inherit;
+   Uses the parent's font.
+
+   font-size and font-weight:
+   Set the text appearance.
+*/
+
+.edit-btn,
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/*
+   Edit action uses brown color.
+*/
+
+.edit-btn {
+    color: #a77b45;
+}
+
+
+/*
+   Delete action uses red color to distinguish
+   it from the Edit action.
+*/
+
+.delete-btn {
+    color: #d14e4e;
+}
+
+
+/* =====================================================
+   25. EMPTY STATE
+   ===================================================== */
+
+/*
+   .empty-state is displayed when the user has
+   not created any blog posts.
+
+   background:
+   White background.
+
+   border:
+   Light border.
+
+   padding:
+   Adds space inside the empty-state box.
+
+   text-align: center;
+   Centers its text horizontally.
+
+   border-radius:
+   Rounds the corners.
+
+   color:
+   Grey text.
+*/
+
+.empty-state {
+    background: white;
+    border: 1px solid #eee;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    color: #777;
+}
+
+
+/*
+   Selects h3 inside empty-state.
+
+   Changes heading color to dark.
+
+   Adds 8px spacing below it.
+*/
+
+.empty-state h3 {
+    color: #222;
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   26. EDIT PAGE
+   ===================================================== */
+
+/*
+   .edit-container is used on the edit page.
+
+   max-width: 750px;
+   Prevents the editing form from becoming too wide.
+
+   This selector is used in edit.ejs:
+   <main class="container edit-container">
+*/
+
+.edit-container {
+    max-width: 750px;
+}
+
+
+/*
+   This is a nested selector.
+
+   .edit-container .create-section h1 means:
+
+   Find an h1 element inside .create-section,
+   where .create-section is inside .edit-container.
+
+   font-family:
+   Applies the decorative heading font.
+
+   margin-bottom:
+   Adds space below the heading.
+*/
+
+.edit-container .create-section h1 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   27. FOOTER
+   ===================================================== */
+
+/*
+   Styles the footer at the bottom of the website.
+
+   text-align: center;
+   Centers footer text horizontally.
+
+   padding: 30px 15px;
+   30px vertical padding and 15px horizontal padding.
+
+   background:
+   White footer background.
+
+   border-top:
+   Adds a thin line above the footer.
+
+   color:
+   Makes footer text grey.
+
+   font-size:
+   Makes footer text small.
+*/
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    background: #fff;
+    border-top: 1px solid #e8e5dd;
+    color: #999;
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   28. RESPONSIVE DESIGN - TABLETS AND SMALLER SCREENS
+   ===================================================== */
+
+/*
+   @media is called a CSS media query.
+
+   max-width: 768px means:
+
+   Apply the CSS inside this block when the viewport
+   width is 768px or smaller.
+
+   This helps adjust the website for tablets
+   and mobile devices.
+*/
+
+@media (max-width: 768px) {
+
+
+    /*
+       Reduce the navbar's horizontal padding
+       on smaller screens.
+    */
+
+    .navbar {
+        padding: 0 6%;
+    }
+
+
+    /*
+       Increase the container width from 82% to 88%.
+
+       This gives the content more available space
+       on smaller screens.
+    */
+
+    .container {
+        width: 88%;
+    }
+
+
+    /*
+       Reduce the hero section's vertical spacing
+       so it doesn't take too much space on mobile.
+    */
+
+    .hero {
+        padding: 70px 0 55px;
+    }
+
+
+    /*
+       Change the posts grid from two columns to one.
+
+       repeat(2, 1fr) becomes 1fr.
+
+       This makes each post card occupy a full row,
+       which is easier to read on a narrow screen.
+    */
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /*
+       Reduce the create-section's inner and outer spacing
+       on smaller devices.
+    */
+
+    .create-section {
+        padding: 22px;
+        margin: 45px 0;
+    }
+
+
+    /*
+       Reduce the Latest Articles heading size
+       for smaller screens.
+    */
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+}
+
+
+/* =====================================================
+   29. RESPONSIVE DESIGN - VERY SMALL SCREENS
+   ===================================================== */
+
+/*
+   This media query applies when the viewport width
+   is 400px or smaller.
+
+   It handles very small mobile screens.
+*/
+
+@media (max-width: 400px) {
+
+
+    /*
+       Change post metadata from a horizontal row
+       to a vertical column.
+
+       The article number and date will appear
+       one below the other.
+    */
+
+    .post-meta {
+        flex-direction: column;
+    }
+
+
+    /*
+       Reduce the logo size so it fits comfortably
+       on smaller mobile screens.
+    */
+
+    .logo {
+        font-size: 23px;
+    }
+
+}
+
+
+/* =====================================================
+   END OF STYLE.CSS
+   ===================================================== */
+
+/*
+   Congratulations!
+
+   You have now styled:
+
+   1. Navbar
+   2. Blog logo
+   3. Navigation links
+   4. Hero section
+   5. Create post form
+   6. Input fields and textarea
+   7. Buttons
+   8. Blog post cards
+   9. Edit and Delete actions
+   10. Empty state
+   11. Edit page
+   12. Footer
+   13. Responsive mobile layout
+*/

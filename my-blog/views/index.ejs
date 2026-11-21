@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<!-- Tells the browser that this document uses HTML5 -->
+
+<html lang="en">
+<!-- The root element of the HTML page. lang="en" means the page language is English -->
+
+<head>
+    <!-- The head contains settings and information about the webpage -->
+
+    <meta charset="UTF-8">
+    <!-- Supports standard characters, symbols and different languages -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the website responsive on mobile, tablet and desktop screens -->
+
+    <title>My Personal Blog</title>
+    <!-- The title shown on the browser tab -->
+
+    <link rel="stylesheet" href="/style.css">
+    <!-- Connects our CSS file to this HTML page -->
+    <!-- Express serves the public folder, so /style.css points to public/style.css -->
+
+</head>
+
+<body>
+<!-- Everything inside body is the webpage content -->
+
+    <header class="navbar">
+    <!-- Header section at the top of the website -->
+    <!-- class="navbar" allows us to style this header using CSS -->
+
+        <a href="/" class="logo">My<span>Blog.</span></a>
+        <!-- A clickable logo -->
+        <!-- href="/" sends the user to the homepage -->
+        <!-- span separates Blog so CSS can style it differently -->
+
+        <a href="#create-post" class="nav-link">
+        <!-- This link jumps to the element having id="create-post" -->
+
+            Write a Post +
+            <!-- Text shown inside the navigation link -->
+
+        </a>
+
+    </header>
+
+
+    <main class="container">
+    <!-- Main content of the website -->
+    <!-- container class controls the page width and alignment using CSS -->
+
+
+        <section class="hero">
+        <!-- Hero section: introductory section of the website -->
+
+            <p class="eyebrow">WELCOME TO MY SPACE</p>
+            <!-- Small introductory text above the main heading -->
+
+            <h1>Ideas, Stories & <br>
+                <span>Thoughts.</span>
+            </h1>
+            <!-- Main heading of the website -->
+            <!-- h1 is the most important heading -->
+            <!-- br creates a line break -->
+            <!-- span allows us to apply special styling to Thoughts -->
+
+            <p class="hero-description">
+            <!-- Paragraph describing the purpose of the blog -->
+
+                A personal space to share ideas, experiences
+                and everything worth writing about.
+
+            </p>
+
+        </section>
+
+
+        <!-- CREATE POST FORM -->
+
+        <section class="create-section" id="create-post">
+        <!-- Section where users can write new blog posts -->
+        <!-- id="create-post" is used by the navigation link above -->
+
+            <h2>Create a New Post</h2>
+            <!-- Heading of the post creation section -->
+
+            <form action="/posts" method="POST">
+            <!-- Form submits the entered information to /posts -->
+            <!-- POST sends information to the Express server -->
+            <!-- Express will receive the form data and create a post -->
+
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Enter your post title"
+                    maxlength="150"
+                    required
+                >
+                <!-- Input field for the post title -->
+                <!-- type="text" allows the user to enter text -->
+                <!-- name="title" is the key used by Express to read the title -->
+                <!-- placeholder displays a hint inside the input -->
+                <!-- maxlength="150" restricts the title to 150 characters -->
+                <!-- required means the form cannot be submitted empty -->
+
+                <textarea
+                    name="content"
+                    placeholder="Write your thoughts here..."
+                    rows="5"
+                    required
+                ></textarea>
+                <!-- Textarea is used for writing longer blog content -->
+                <!-- name="content" allows Express to read the content -->
+                <!-- placeholder displays a hint before the user types -->
+                <!-- rows="5" sets the initial visible height -->
+                <!-- required makes the content mandatory -->
+
+                <button type="submit" class="btn">
+                <!-- Submit button for the form -->
+                <!-- type="submit" sends the form data to the server -->
+
+                    Publish Post +
+                    <!-- Text displayed on the button -->
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- DISPLAY ALL POSTS -->
+
+        <section class="posts-section">
+        <!-- Section responsible for displaying published blog posts -->
+
+            <div class="section-heading">
+            <!-- Container for the section heading and post count -->
+
+                <div>
+                <!-- Groups the eyebrow text and heading together -->
+
+                    <p class="eyebrow">THE JOURNAL</p>
+                    <!-- Small label above the section title -->
+
+                    <h2>Latest Articles</h2>
+                    <!-- Heading of the blog post listing -->
+
+                </div>
+
+                <span class="post-count">
+                <!-- span is an inline element used here for the post count -->
+
+                    <%= posts.length %> Posts
+                    <!-- EJS expression -->
+                    <!-- posts is the array received from server.js -->
+                    <!-- posts.length returns the number of posts in the array -->
+                    <!-- EJS prints the result into the HTML -->
+
+                </span>
+
+            </div>
+
+
+            <% if (posts.length === 0) { %>
+            <!-- EJS IF condition -->
+            <!-- Checks whether the posts array is empty -->
+            <!-- === means strict equality comparison -->
+            <!-- If there are zero posts, the following HTML is displayed -->
+
+                <div class="empty-state">
+                <!-- Container for the empty blog message -->
+
+                    <h3>No posts yet!</h3>
+                    <!-- Message shown when there are no posts -->
+
+                    <p>Be the first to share something.</p>
+                    <!-- Encourages the user to create the first post -->
+
+                </div>
+
+            <% } %>
+            <!-- Ends the EJS IF condition -->
+
+
+            <div class="posts-grid">
+            <!-- Container holding all blog post cards -->
+            <!-- CSS Grid will arrange these cards into columns -->
+
+
+                <% posts.forEach((post, index) => { %>
+                <!-- EJS loop -->
+                <!-- forEach runs once for every post in the posts array -->
+                <!-- post represents the current blog post -->
+                <!-- index represents its position: 0, 1, 2, 3... -->
+                <!-- The HTML below is generated separately for every post -->
+
+
+                    <article class="post-card">
+                    <!-- article represents one independent blog post -->
+                    <!-- post-card class controls its appearance using CSS -->
+
+
+                        <div class="post-meta">
+                        <!-- Container for post information such as number and date -->
+
+                            <span>ARTICLE <%= index + 1 %></span>
+                            <!-- Displays article numbering -->
+                            <!-- index starts at 0, so index + 1 starts numbering at 1 -->
+
+                            <span>
+                            <!-- Displays the publication date -->
+
+                                <%= new Date(post.date).toLocaleDateString("en-IN") %>
+                                <!-- Creates a JavaScript Date object from post.date -->
+                                <!-- toLocaleDateString formats it into a readable date -->
+                                <!-- en-IN uses Indian date formatting -->
+
+                            </span>
+
+                        </div>
+
+
+                        <h3><%= post.title %></h3>
+                        <!-- Displays the current post's title -->
+                        <!-- post.title accesses the title property of the post object -->
+                        <!-- <%= %> outputs escaped content, helping prevent HTML injection -->
+
+
+                        <p class="post-content"><%= post.content %></p>
+                        <!-- Displays the blog post's content -->
+                        <!-- post.content accesses the content property -->
+                        <!-- CSS class post-content is used for styling -->
+
+
+                        <div class="post-actions">
+                        <!-- Container for edit and delete actions -->
+
+
+                            <a
+                                href="/posts/<%= post.id %>/edit"
+                                class="edit-btn"
+                            >
+                            <!-- Link to the editing page -->
+                            <!-- post.id uniquely identifies this particular post -->
+                            <!-- Example URL: /posts/123/edit -->
+
+                                Edit
+                                <!-- Text displayed on the edit link -->
+
+                            </a>
+
+
+                            <form
+                                action="/posts/<%= post.id %>/delete"
+                                method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this post?')"
+                            >
+                            <!-- Form used for deleting a post -->
+                            <!-- The URL contains the ID of the post to be deleted -->
+                            <!-- POST sends the delete request to Express -->
+                            <!-- onsubmit runs JavaScript before the form is submitted -->
+                            <!-- confirm() displays a confirmation popup -->
+                            <!-- If the user clicks Cancel, the form submission is stopped -->
+
+
+                                <button type="submit" class="delete-btn">
+                                <!-- Button that submits the delete form -->
+
+                                    Delete
+                                    <!-- Text displayed on the button -->
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </article>
+
+                <% }) %>
+                <!-- Ends the posts.forEach loop -->
+                <!-- When the loop finishes, every post has been displayed -->
+
+            </div>
+
+        </section>
+
+    </main>
+    <!-- Ends the main content section -->
+
+
+    <footer>
+    <!-- Footer section at the bottom of the website -->
+
+        <p>© 2026 MyBlog. Built with Node.js & Express.- Kaartik Arya</p>
+        <!-- Copyright text -->
+
+    </footer>
+
+</body>
+<!-- Ends the visible webpage content -->
+
+</html>
+<!-- Ends the complete HTML document -->

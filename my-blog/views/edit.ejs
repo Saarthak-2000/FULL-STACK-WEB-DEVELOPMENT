@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<!-- Tells the browser this document uses modern HTML5 standards -->
+
+<html lang="en">
+<!-- Root element of the page -->
+<!-- lang="en" tells browsers and accessibility tools that the language is English -->
+
+<head>
+    <!-- The head contains settings and information about this webpage -->
+
+    <meta charset="UTF-8">
+    <!-- Defines the character encoding as UTF-8 -->
+    <!-- Supports English, symbols, and many other characters -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the website responsive on mobile, tablet, and desktop -->
+    <!-- width=device-width uses the actual device screen width -->
+    <!-- initial-scale=1.0 sets the initial zoom level to 100% -->
+
+    <title>Edit Blog Post</title>
+    <!-- Text displayed in the browser tab -->
+
+    <link rel="stylesheet" href="/style.css">
+    <!-- Connects this page to our CSS stylesheet -->
+    <!-- Express serves the public folder, so /style.css refers to public/style.css -->
+
+</head>
+<!-- Ends the head section -->
+
+
+<body>
+<!-- Everything inside body is the visible webpage content -->
+
+
+    <header class="navbar">
+    <!-- Header section at the top of the webpage -->
+    <!-- navbar is a CSS class used to style this section -->
+
+        <a href="/" class="logo">My<span>Blog.</span></a>
+        <!-- Creates the clickable website logo -->
+        <!-- href="/" takes the user to the homepage -->
+        <!-- class="logo" applies logo styling -->
+        <!-- span separates the word Blog so it can have different styling -->
+
+        <a href="/" class="nav-link">Back to Home</a>
+        <!-- Creates a link that takes the user back to the homepage -->
+        <!-- class="nav-link" applies CSS styling to this link -->
+
+    </header>
+    <!-- Ends the header section -->
+
+
+    <main class="container edit-container">
+    <!-- Main content area of the page -->
+    <!-- container controls the width and positioning -->
+    <!-- edit-container adds styling specific to the editing page -->
+
+
+        <section class="create-section">
+        <!-- Creates a section containing the post editing form -->
+        <!-- create-section reuses the CSS styling from the homepage form -->
+
+            <p class="eyebrow">UPDATE YOUR ARTICLE</p>
+            <!-- Small text above the main heading -->
+            <!-- eyebrow is a CSS class used for small decorative text -->
+
+            <h1>Edit Your Post</h1>
+            <!-- Main heading of the edit page -->
+            <!-- h1 represents the most important heading on this page -->
+
+
+            <form action="/posts/<%= post.id %>/update" method="POST">
+            <!-- Creates the form used to update the existing post -->
+            <!-- action tells the browser where to send the form data -->
+            <!-- post.id dynamically inserts the ID of the post being edited -->
+            <!-- Example action: /posts/abc123/update -->
+            <!-- method="POST" sends the form data to the Express server -->
+            <!-- The server uses this ID to identify which post should be updated -->
+
+
+                <label for="title">Post Title</label>
+                <!-- Label describing the title input -->
+                <!-- for="title" connects this label to the input whose id is title -->
+                <!-- Clicking the label focuses the title input -->
+
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value="<%= post.title %>"
+                    maxlength="150"
+                    required
+                >
+                <!-- Input field used for editing the post title -->
+                <!-- type="text" allows single-line text -->
+                <!-- id="title" uniquely identifies this input in this page -->
+                <!-- name="title" is the field name sent to Express -->
+                <!-- value="<%= post.title %>" fills the input with the existing title -->
+                <!-- EJS inserts the title dynamically from the selected post -->
+                <!-- maxlength="150" limits the title to 150 characters -->
+                <!-- required prevents submitting the form with an empty title -->
+
+
+                <label for="content">Post Content</label>
+                <!-- Label for the post content textarea -->
+                <!-- for="content" connects this label to id="content" -->
+
+
+                <textarea
+                    id="content"
+                    name="content"
+                    rows="8"
+                    required
+                ><%= post.content %></textarea>
+                <!-- Creates a multiline text area for editing post content -->
+                <!-- id="content" identifies the textarea -->
+                <!-- name="content" is the field name sent to Express -->
+                <!-- rows="8" sets its initial visible height to 8 lines -->
+                <!-- required makes the content mandatory -->
+                <!-- EJS inserts the existing post content between the opening and closing textarea tags -->
+                <!-- The user can modify the text before saving -->
+
+
+                <button type="submit" class="btn">
+                <!-- Button used to submit the form -->
+                <!-- type="submit" sends the form to its action URL -->
+                <!-- class="btn" applies button styling from style.css -->
+
+                    Save Changes
+                    <!-- Text displayed inside the button -->
+
+                </button>
+
+            </form>
+            <!-- Ends the editing form -->
+
+        </section>
+        <!-- Ends the form section -->
+
+    </main>
+    <!-- Ends the main page content -->
+
+
+    <footer>
+    <!-- Footer section at the bottom of the website -->
+
+        <p>© 2026 MyBlog. Built with Node.js & Express.</p>
+        <!-- Displays the copyright message -->
+
+    </footer>
+    <!-- Ends the footer -->
+
+
+</body>
+<!-- Ends the visible webpage content -->
+
+</html>
+<!-- Ends the complete HTML document -->
